@@ -19,3 +19,12 @@ yarn build
 ## To Deploy
 
 firebase deploy
+
+## TODO
+upgrade 2022.2
+texture compression mobile
+cartoon shader and model
+moving camera
+fullscreen mode
+try on low end phone
+dynamic loading
