@@ -21,8 +21,7 @@ yarn build
 firebase deploy
 
 ## TODO
-upgrade 2022.2
-texture compression mobile
+texture compression mobile - multibuild
 cartoon shader and model
 moving camera
 fullscreen mode
