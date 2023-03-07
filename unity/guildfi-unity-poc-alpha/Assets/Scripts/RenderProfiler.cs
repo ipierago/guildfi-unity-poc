@@ -6,50 +6,61 @@ using UnityEngine;
 public class RenderProfiler : MonoBehaviour
 {
   string statsText;
-  ProfilerRecorder renderUsedTextureBytes;
+  ProfilerRecorder renderUsedTexturesBytes;
   ProfilerRecorder renderUsedTexturesCount;
-
-  static double GetRecorderFrameAverage(ProfilerRecorder recorder)
-  {
-    var samplesCount = recorder.Capacity;
-    if (samplesCount == 0)
-      return 0;
-
-    double r = 0;
-    unsafe
-    {
-      var samples = stackalloc ProfilerRecorderSample[samplesCount];
-      recorder.CopyTo(samples, samplesCount);
-      for (var i = 0; i < samplesCount; ++i)
-        r += samples[i].Value;
-      r /= samplesCount;
-    }
-
-    return r;
-  }
+  ProfilerRecorder renderTrianglesCount;
+  ProfilerRecorder renderDrawCallsCount;
+  ProfilerRecorder renderBatchesCount;
+  ProfilerRecorder renderVerticesCount;
+  List<TextureFormat> textureFormats;
 
   void OnEnable()
   {
-    renderUsedTextureBytes = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Used Texture Bytes");
-    renderUsedTexturesCount = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Used Texture Count");
+    renderUsedTexturesBytes = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Used Textures Bytes");
+    renderUsedTexturesCount = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Used Textures Count");
+    renderTrianglesCount = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Triangles Count");
+    renderDrawCallsCount = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Draw Calls Count");
+    renderBatchesCount = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Batches Count");
+    renderVerticesCount = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Vertices Count");
   }
 
   void OnDisable()
   {
-    renderUsedTextureBytes.Dispose();
+    renderUsedTexturesBytes.Dispose();
     renderUsedTexturesCount.Dispose();
+    renderTrianglesCount.Dispose();
+    renderDrawCallsCount.Dispose();
+    renderBatchesCount.Dispose();
+    renderVerticesCount.Dispose();
   }
+
+  void Start()
+  {
+    Texture[] textures = Util.FindTexturesInCurrentScene();
+    textureFormats = Util.FindTextureFormats(textures);
+    foreach (TextureFormat textureFormat in textureFormats)
+    {
+      Debug.Log("Texture format found: " + textureFormat.ToString());
+    }
+  }
+
 
   void Update()
   {
     var sb = new StringBuilder(500);
-    sb.AppendLine($"Render Used Texture Bytes: {renderUsedTextureBytes.LastValue / (1024 * 1024)} MB");
-    sb.AppendLine($"Render Used Texture Count: {renderUsedTexturesCount.LastValue}");
+    sb.AppendLine($"Draw Calls Count: {renderDrawCallsCount.LastValue}");
+    sb.AppendLine($"Batches Count: {renderBatchesCount.LastValue}");
+    sb.AppendLine($"Used Texture Bytes: {renderUsedTexturesBytes.LastValue / (1024)} KB");
+    sb.AppendLine($"Used Texture Count: {renderUsedTexturesCount.LastValue}");
+    sb.AppendLine($"Triangles Count: {renderTrianglesCount.LastValue}");
+    sb.AppendLine($"Vertices Count: {renderVerticesCount.LastValue}");
+    sb.AppendLine($"Texture Formats: {string.Join(", ", textureFormats)}");
+
     statsText = sb.ToString();
   }
 
   void OnGUI()
   {
-    GUI.TextArea(new Rect(10, 30, 250, 100), statsText);
+    GUI.TextArea(new Rect(10, 30, 250, 150), statsText);
   }
 }
