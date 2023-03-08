@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Aether
+  m_EditorClassIdentifier: 
+  m_GroupName: Aether
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a7c2cd78948a31b47b90de60e84b6e20
+  m_SerializeEntries:
+  - m_GUID: 0320267b0cf9d5f43ab3bc4260231e10
+    m_Address: Assets/Addressables/Aether/Aether.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ff665ad35d6a5144da0f1c1b28fb96d6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0e5079815f364dc4eb3cd240a70cd2d8, type: 2}
+    - {fileID: 11400000, guid: bae6961a8a232d64e84606d174f3955b, type: 2}

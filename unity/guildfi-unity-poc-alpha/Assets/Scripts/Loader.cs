@@ -8,15 +8,6 @@ public class Loader : MonoBehaviour
 {
   public AssetReference[] assetReferences;
   private AsyncOperationHandle<GameObject> asyncOpHandle;
-  /*
-    void Start()
-    {
-      if (assetReferences.Length > 0)
-      {
-        InstantiateAsync(0);
-      }
-    }
-  */
   public void InstantiateAsync(int index)
   {
     if (asyncOpHandle.IsValid())

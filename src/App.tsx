@@ -27,6 +27,24 @@ function App() {
           >
             Load Model 0
           </button>
+          <button
+            className="w-fit my-2 mx-auto border-black border-2 p-2 rounded-md hover:bg-slate-300
+        active:bg-slate-800"
+            onClick={() => {
+              sendMessage('Loader', 'InstantiateAsync', 1);
+            }}
+          >
+            Load Model 1
+          </button>
+          <button
+            className="w-fit my-2 mx-auto border-black border-2 p-2 rounded-md hover:bg-slate-300
+        active:bg-slate-800"
+            onClick={() => {
+              sendMessage('Loader', 'InstantiateAsync', 2);
+            }}
+          >
+            Load Model 2
+          </button>
         </div>
         <Unity
           unityProvider={unityProvider}
