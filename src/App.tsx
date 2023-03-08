@@ -24,6 +24,7 @@ function App() {
     frameworkUrl:
       'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.framework.js',
     codeUrl: 'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.wasm',
+    streamingAssetsUrl: 'unity/guildfi-unity-poc-alpha/StreamingAssets',
   });
 
   return (
