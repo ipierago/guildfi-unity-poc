@@ -1,15 +1,20 @@
 import { Unity, useUnityContext } from 'react-unity-webgl';
 
 function App() {
-  const { unityProvider, sendMessage } = useUnityContext({
-    loaderUrl:
-      'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.loader.js',
-    dataUrl: 'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.data',
-    frameworkUrl:
-      'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.framework.js',
-    codeUrl: 'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.wasm',
-    streamingAssetsUrl: 'unity/guildfi-unity-poc-alpha/StreamingAssets',
-  });
+  const { unityProvider, isLoaded, loadingProgression, sendMessage } =
+    useUnityContext({
+      loaderUrl:
+        'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.loader.js',
+      dataUrl:
+        'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.data',
+      frameworkUrl:
+        'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.framework.js',
+      codeUrl:
+        'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.wasm',
+      streamingAssetsUrl: 'unity/guildfi-unity-poc-alpha/StreamingAssets',
+    });
+
+  const loadingPercentage = Math.round(loadingProgression * 100);
 
   return (
     <div className="h-screen select-none">
@@ -46,11 +51,14 @@ function App() {
             Load Model 2
           </button>
         </div>
-        <Unity
-          unityProvider={unityProvider}
-          className="w-full mx-auto p-2 h-full bg-gray-300"
-          //className="max-w-[12rem]"
-        />
+        <div className="w-full mx-auto p-2 h-full bg-gray-300">
+          {isLoaded === false && (
+            <div className="w-fit h-full text-xl justify-items-center items-center flex mx-auto">
+              Loading... ({loadingPercentage}%)
+            </div>
+          )}
+          <Unity unityProvider={unityProvider} className="w-full h-full" />
+        </div>
       </div>
     </div>
   );
