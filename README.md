@@ -25,10 +25,11 @@ yarn build
 firebase deploy
 
 ## TODO
-Shaders as addressables in default bundle
-Remove buttons outside eidtor
 Loading percentage communicated back to react
-Loading screen for first render
+Shaders as addressables in default bundle
+Nice background
+Another Genshin model
+
 FPS
 texture compression mobile - multibuild
 try on low end phone
