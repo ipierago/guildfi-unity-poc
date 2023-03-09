@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.oddworm.addressablesbuildlayoutexplorer": {
+      "version": "https://github.com/pschraut/UnityAddressablesBuildLayoutExplorer.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "dceed44df23238b3f916c14c0254fab44a482464"
+    },
     "com.tayx.graphy": {
       "version": "https://github.com/Tayx94/graphy.git",
       "depth": 0,
@@ -88,6 +95,13 @@
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.0.2",
       "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.profiling.core": {
+      "version": "1.0.2",
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

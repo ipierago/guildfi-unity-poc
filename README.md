@@ -6,7 +6,11 @@ yarn
 
 ## To Build Unity
 
-Open unity/guildfi-unity-poc-alpha in Unity and build to WebGL to public/unity/guildfi-unity-poc-alpha.
+You need to build the Unity project and deploy bundles to the CDN.
+
+1. Open unity/guildfi-unity-poc-alpha in Unity
+2. Build to WebGL to public/unity/guildfi-unity-poc-alpha (this will also build bundles)
+3. Windows->Asset Management->Adressables->Groups->Build to CCD
 
 ## To debug
 
@@ -21,8 +25,7 @@ yarn build
 firebase deploy
 
 ## TODO
-Make it smaller
-Check that bundles contain correct things - shaders?
+Shaders as addressables in default bundle
 Remove buttons outside eidtor
 Loading percentage communicated back to react
 Loading screen for first render
