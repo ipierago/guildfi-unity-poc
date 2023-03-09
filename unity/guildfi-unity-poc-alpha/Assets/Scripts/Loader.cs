@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -7,8 +8,11 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class Loader : MonoBehaviour
 {
   public AssetReference[] assetReferences;
+  public BrowserInterop browserInterop;
+
   private AsyncOperationHandle<GameObject> asyncOpHandle;
-  public void InstantiateAsync(int index)
+
+  public async Task InstantiateAsync(int index)
   {
     if (asyncOpHandle.IsValid())
     {
@@ -23,12 +27,24 @@ public class Loader : MonoBehaviour
         if (op.Status == AsyncOperationStatus.Succeeded)
         {
           Debug.Log("Successfully loaded and instantiated object.");
+          browserInterop.CallSetModelLoadPercentage(100);
         }
         else
         {
           Debug.LogError("Failed to load and instantiate object.");
+          browserInterop.CallSetModelLoadPercentage(-1);
+
         }
       };
+
+      while (!asyncOpHandle.IsDone)
+      {
+        float downloadPercentage = asyncOpHandle.PercentComplete * 100f;
+        Debug.Log($"Downloading: {downloadPercentage:F1}%");
+        browserInterop.CallSetModelLoadPercentage((int)downloadPercentage);
+        await Task.Yield();
+      }
+
     }
   }
 

@@ -1,10 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+#pragma warning disable 4014
 
-public class ButtonController : MonoBehaviour
+public class DebugButtons : MonoBehaviour
 {
   public Loader loader;
+  public BrowserInterop browserInterop;
 
+  private int modelLoadPercentage = 0;
+
+#if UNITY_EDITOR == true
   private void OnGUI()
   {
     if (GUI.Button(new Rect(10, 10, 150, 50), "0"))
@@ -19,5 +24,11 @@ public class ButtonController : MonoBehaviour
     {
       loader.InstantiateAsync(2);
     }
+    if (GUI.Button(new Rect(10, 190, 150, 50), "SetModeLoadPercentage"))
+    {
+      ++modelLoadPercentage;
+      browserInterop.CallSetModelLoadPercentage(modelLoadPercentage);
+    }
   }
+#endif
 }

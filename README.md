@@ -25,7 +25,6 @@ yarn build
 firebase deploy
 
 ## TODO
-Loading percentage communicated back to react
 Shaders as addressables in default bundle
 Nice background
 Another Genshin model
