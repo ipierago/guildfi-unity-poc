@@ -12,22 +12,18 @@ public class DebugButtons : MonoBehaviour
 #if UNITY_EDITOR == true
   private void OnGUI()
   {
-    if (GUI.Button(new Rect(10, 10, 150, 50), "0"))
+    const int h = 50;
+    const int g = 10;
+    const int w = 150;
+
+    int y = g;
+    for (var i = 0; i < loader.assetReferences.Length; ++i)
     {
-      loader.InstantiateAsync(0);
-    }
-    if (GUI.Button(new Rect(10, 70, 150, 50), "1"))
-    {
-      loader.InstantiateAsync(1);
-    }
-    if (GUI.Button(new Rect(10, 130, 150, 50), "2"))
-    {
-      loader.InstantiateAsync(2);
-    }
-    if (GUI.Button(new Rect(10, 190, 150, 50), "SetModeLoadPercentage"))
-    {
-      ++modelLoadPercentage;
-      browserInterop.CallSetModelLoadPercentage(modelLoadPercentage);
+      if (GUI.Button(new Rect(g, y, w, h), $"Model {i}"))
+      {
+        loader.InstantiateAsync(i);
+      }
+      y += h + g;
     }
   }
 #endif

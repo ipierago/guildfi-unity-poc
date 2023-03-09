@@ -487,18 +487,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assetReferences:
-  - m_AssetGUID: 91f24d13450d3cf49b188e7ce1e410d7
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 31a95c365ead5fc4c82bfd672bb59f2f
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
   - m_AssetGUID: 0320267b0cf9d5f43ab3bc4260231e10
     m_SubObjectName: 
     m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 69c1130507db9da4cbb7794df9b5b30a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: e35f40faf8ad5e141858b4eeee3ae2e3
+    m_SubObjectName: 
+    m_SubObjectType: 
     m_EditorAssetChanged: 1
+  - m_AssetGUID: 31a95c365ead5fc4c82bfd672bb59f2f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: 91f24d13450d3cf49b188e7ce1e410d7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  browserInterop: {fileID: 140294489}
 --- !u!1 &1000743853
 GameObject:
   m_ObjectHideFlags: 0

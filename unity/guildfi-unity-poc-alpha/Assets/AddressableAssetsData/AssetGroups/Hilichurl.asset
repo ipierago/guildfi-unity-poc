@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Hilichurl
+  m_EditorClassIdentifier: 
+  m_GroupName: Hilichurl
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d48614ea3fad9284ab8c53c9bc7af4a9
+  m_SerializeEntries:
+  - m_GUID: e35f40faf8ad5e141858b4eeee3ae2e3
+    m_Address: Assets/Addressables/Hilichurl/Hilichurl.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ff665ad35d6a5144da0f1c1b28fb96d6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 381058f1fa2fbfb408e10974824cfc3d, type: 2}
+    - {fileID: 11400000, guid: 500818a548d886445b94e76a748266a5, type: 2}

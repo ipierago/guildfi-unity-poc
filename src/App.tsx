@@ -43,33 +43,18 @@ function App() {
           {modelLoadPercentage == 100 && <Fragment>Ready!</Fragment>}
         </div>
         <div className="flex flex-row">
-          <button
-            className="w-fit my-2 mx-auto border-black border-2 p-2 rounded-md hover:bg-slate-300
-        active:bg-slate-800"
-            onClick={() => {
-              sendMessage('Loader', 'InstantiateAsync', 0);
-            }}
-          >
-            Load Model 0
-          </button>
-          <button
-            className="w-fit my-2 mx-auto border-black border-2 p-2 rounded-md hover:bg-slate-300
-        active:bg-slate-800"
-            onClick={() => {
-              sendMessage('Loader', 'InstantiateAsync', 1);
-            }}
-          >
-            Load Model 1
-          </button>
-          <button
-            className="w-fit my-2 mx-auto border-black border-2 p-2 rounded-md hover:bg-slate-300
-        active:bg-slate-800"
-            onClick={() => {
-              sendMessage('Loader', 'InstantiateAsync', 2);
-            }}
-          >
-            Load Model 2
-          </button>
+          {[...Array(5)].map((_, i) => (
+            <button
+              key={i}
+              className="w-fit my-2 mx-auto border-black border-2 p-2 rounded-md hover:bg-slate-300
+            active:bg-slate-800"
+              onClick={() => {
+                sendMessage('Loader', 'InstantiateAsync', i);
+              }}
+            >
+              Load Model {i}
+            </button>
+          ))}
         </div>
         <div className="w-full mx-auto p-2 h-full bg-gray-300">
           {isLoaded === false && (
