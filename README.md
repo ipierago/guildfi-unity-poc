@@ -21,9 +21,11 @@ yarn build
 firebase deploy
 
 ## TODO
+Make it smaller
+Check that bundles contain correct things - shaders?
+Remove buttons outside eidtor
+Loading percentage communicated back to react
+Loading screen for first render
+FPS
 texture compression mobile - multibuild
-cartoon shader and model
-moving camera
-fullscreen mode
 try on low end phone
-dynamic loading
