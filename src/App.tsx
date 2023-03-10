@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useCallback } from 'react';
 import { Unity, useUnityContext } from 'react-unity-webgl';
 
 function App() {
@@ -18,6 +18,33 @@ function App() {
     codeUrl: 'unity/guildfi-unity-poc-alpha/Build/guildfi-unity-poc-alpha.wasm',
     streamingAssetsUrl: 'unity/guildfi-unity-poc-alpha/StreamingAssets',
   });
+
+  const [devicePixelRatio, setDevicePixelRatio] = useState(
+    window.devicePixelRatio
+  );
+
+  const handleChangePixelRatio = useCallback(
+    function () {
+      // A function which will update the device pixel ratio of the Unity
+      // Application to match the device pixel ratio of the browser.
+      const updateDevicePixelRatio = function () {
+        setDevicePixelRatio(window.devicePixelRatio);
+      };
+      // A media matcher which watches for changes in the device pixel ratio.
+      const mediaMatcher = window.matchMedia(
+        `screen and (resolution: ${devicePixelRatio}dppx)`
+      );
+      // Adding an event listener to the media matcher which will update the
+      // device pixel ratio of the Unity Application when the device pixel
+      // ratio changes.
+      mediaMatcher.addEventListener('change', updateDevicePixelRatio);
+      return function () {
+        // Removing the event listener when the component unmounts.
+        mediaMatcher.removeEventListener('change', updateDevicePixelRatio);
+      };
+    },
+    [devicePixelRatio]
+  );
 
   const [modelLoadPercentage, setModelLoadPercentage] = useState(100);
 
@@ -62,7 +89,11 @@ function App() {
               Loading... ({loadingPercentage}%)
             </div>
           )}
-          <Unity unityProvider={unityProvider} className="w-full h-full" />
+          <Unity
+            unityProvider={unityProvider}
+            className="w-full h-full"
+            devicePixelRatio={devicePixelRatio}
+          />
         </div>
       </div>
     </div>

@@ -47,6 +47,11 @@ You can now serve the dist folder if you'd like.
 
 ## TODO
 - Shaders as addressables in default bundle
-- FPS counter
-- Build multiple version of the Unity app for different texture compressions - DXT1 (desktop), ETC (mobile), ASTC (mobile)
 - try performance on low end phone
+- Compare against threejs / babylonjs
+- Build multiple version of the Unity app for different texture compressions - DXT1 (desktop), ETC (mobile), ASTC (mobile)
+- Progressively loaded models and/or texures? Is it needed?
+
+## ISSUES
+- models in addressable bundles are much larger than expected
+  
